@@ -31,4 +31,4 @@ dependencies = [
 requires-python = ">=3.6"
 
 [project.urls]
-Homepage = "https://github.com/androbomb/genX.git"
+Homepage = "https://github.com/androbomb/ganX.git"

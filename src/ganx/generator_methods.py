@@ -52,12 +52,12 @@ def generate_all(
         pigments_dict_data  (str)           : Path to the Pigments JSON DB.
         
         _compression_factor (int, optional) : GZIP compression factor. Defaults to 5. Defaults to 5..
-        N_start             (int, optional) : _description_. Defaults to 10.
-        E_int               (list, optional): _description_. Defaults to [0.5, 38.5].
-        rebin_size          (int, optional) : _description_. Defaults to 1024.
-        delta_N             (int, optional) : _description_. Defaults to 1.
-        N_patience          (int, optional) : _description_. Defaults to -1.
-        score_batch         (int, optional) : _description_. Defaults to 1024.
+        N_start             (int, optional) : Starting number of clusters in the Iterative KNN. Defaults to 10.
+        E_int               (list, optional): Energy interval (in keV). Defaults to [0.5, 38.5].
+        rebin_size          (int, optional) : Rebin size of XRF histograms. Defaults to 1024.
+        delta_N             (int, optional) : Delta number of clusters in the Iterative KNN. Defaults to 1.
+        N_patience          (int, optional) : Patience in the Iterative KNN. Defaults to -1.
+        score_batch         (int, optional) : Batch size in each KNN. Defaults to 1024.
     """
     start_all = datetime.datetime.now()
     # init RGB utils

@@ -36,7 +36,7 @@ from sklearn.metrics import silhouette_score
 
 class IterativeKMeans:
     """
-    Class for computing iterative KMeans.
+    Class for computing iterative KMeans Clustering.
     
     The iteration is performed over the number of clusters. 
     The performance for each iteration is computed using the Silhouette score. 

@@ -36,7 +36,7 @@ class XRFUtils:
     Static Methods
         rebin_ma_xrf(img: np.array, n_bins: int = 500)              :   Function to rebin a rank-3 MA-XRF np.array. 
         get_index_from_energy(en: float, _x: np.array)              :   Static method to get the index out of an energy arange. 
-        convolve_xrf(xrf: np.array, kernel : np.array = _default )  : Static method to convolve spatially a MA-XRF np.array. (i.e., along axis = 0,1).
+        convolve_xrf(xrf: np.array, kernel : np.array = _default )  :   Static method to convolve spatially a MA-XRF np.array. (i.e., along axis = 0,1).
         open_file(path_to_file: str, key: str = 'img')              :   Method to open a .h5 or .npz file and initialise a MA-XRF np.array.
     ----------
 
@@ -171,7 +171,7 @@ class XRFUtils:
             Exception   :   If the extension is neither .h5 nor .npz
 
         Returns:
-            _type_: _description_
+            np.array : Loaded np.array
         """
         if not os.path.isfile(path_to_file):
             raise Exception(f"File {path_to_file} not found.")
@@ -193,7 +193,7 @@ class XRFUtils:
 #
 class MAXRF(XRFUtils):
     """_summary_
-    A class defining a MAXRF object. 
+    A class defining a MA-XRF object. 
     It extends XRFUtils adding internal args (the MA-XRF) and methods to analyse the MA-XRF.
 
     Attributes

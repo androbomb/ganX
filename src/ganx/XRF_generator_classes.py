@@ -282,7 +282,10 @@ class Distances:
 
     Static Methods
     --------------
-
+        cosine_similarity(x, y) :   returns the cosine similarity
+        rgb2lab( rgb )          :   returns the CIELAB image
+        CIEdelta1994_similarity(rgb1, rgb2) :   returns the similarity using the CIEdelta1994 distance
+        CIEdelta2000_similarity(rgb1, rgb2) :   returns the similarity using the CIEdelta2000 distance
     """
     def __init__(self):
         pass
@@ -327,7 +330,7 @@ class Distances:
 #
 class XRFGenerator:
     """_summary_
-    Class to perform the XRF generations out of a RGB image. 
+    Class to perform the MA-XRF generations out of a RGB image. 
 
     It generates the MA-XRF np.array by extracting randomly a certain number of counts, pixel-by-pixel,
     from an XRF signal probability distribution obtained, pixel-by-pixel, by similarity with pigments in a passed database.
