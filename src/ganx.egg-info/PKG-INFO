@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: ganx
+Version: 0.0.1
+Author: Alessandro Bombini
+License: Apache License 2.0
+Project-URL: Homepage, https://github.com/androbomb/genX.git
+Keywords: MA-XRF
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: Topic :: Scientific/Engineering :: Image Processing
+Requires-Python: >=3.6
+License-File: LICENSE
