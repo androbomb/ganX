@@ -11,3 +11,4 @@ To generate a synthetic MA-XRF data, it performs the following steps:
 Additionaly, the library offers other classes and methods to explore the XRF dataset.
 
 --------------
+
