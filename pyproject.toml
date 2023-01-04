@@ -17,6 +17,7 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering :: Physics",
     "Topic :: Scientific/Engineering :: Image Processing",
+    "Development Status :: 2 - Pre-Alpha",
 ]
 dependencies = [
     "h5py >= 2.10.0",
