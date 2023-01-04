@@ -21,7 +21,7 @@ from ganx.XRF_generator_classes import XRFGenerator
 # utils
 from ganx.RGB_segmentation_utils import RGBMethods
 # open RGB
-ex_rgb = rgbMethods.open_image(file_name=file, root_path_to_rgb=subdir)
+ex_rgb = RGBMethods.open_image(file_name=file, root_path_to_rgb=subdir)
 
 # init XRF Generator class
 _xrf_generator = XRFGenerator(

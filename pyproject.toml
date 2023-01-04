@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ganx"
-version = "0.0.1"
+version = "0.0.2"
 keywords = ["MA-XRF"]
 authors = [
     { name = "Alessandro Bombini" }
@@ -21,7 +21,7 @@ classifiers = [
     "Development Status :: 2 - Pre-Alpha",
 ]
 dependencies = [
-    "h5py >= 2.10.0",
+    "h5py",
     "Pillow",
     "matplotlib",
     "numpy",
