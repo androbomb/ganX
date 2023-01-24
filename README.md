@@ -36,7 +36,9 @@ _xrf_generator = XRFGenerator(
     # RGBKMeansClustering
     delta_N = 1,
     N_patience = -1,
-    score_batch = 1024 
+    score_batch = 1024,
+    # Threshold
+    generation_threshold = generation_threshold
 )
 
 # generate XRF 
@@ -238,6 +240,7 @@ Static methods:
 File containing the Python classes for performing iterative KMeans clustering on an RGB image.
 
 It contains the following classes:
+
     1. IterativeKMeans
         Class for computing iterative KMeans.
     2. RGBMethods
@@ -431,10 +434,12 @@ Static methods:
 File containing the Python classes for generating a synthetic MA-XRF .h5 file starting from an RGB.
 
 It imports 
+
     A. RGBKMeansClustering ( from RGB_segmentation_utils )
     B. XRFUtils ( from MAXRF_class )
 
 It contains the following classes:
+
     1. PigmentDataBaseUtils(XRFUtils)
     2. Distances
     3. XRFGenerator
@@ -524,6 +529,8 @@ Attributes
     _num_of_counts  (int)   :   Final XRF histogram number of pixel counts. Defaults to 400.
     
     _lambda         (int)   :    XRF Pixel Noise lambda - TBUsed
+
+    generation_threshold    (float)   : Threshold for distance in XRF generation. Has to be in (0, 1) range, where 0 is every pigments and 1 possibily zero. Defaults to 0.2. 
 
     _list_of_rgbs               (np.array | None)   :   Results of the Iterative KNN on RGB; list of RGB clusters
     

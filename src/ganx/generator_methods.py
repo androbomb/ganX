@@ -41,7 +41,8 @@ def save_HDF5_file(
 def generate_all(
     rootdir: str, storedir: str, pigments_dict_data: str, _compression_factor: int = 5,
     N_start = 10, E_int = [0.5, 38.5], 
-    rebin_size = 1024, delta_N = 1, N_patience = -1, score_batch = 1024
+    rebin_size = 1024, delta_N = 1, N_patience = -1, score_batch = 1024,
+    generation_threshold: float = 0.2
 ):
     """_summary_
     Method to generate a set of synthetic MA-XRF data out of a set of RGB images.
@@ -58,6 +59,8 @@ def generate_all(
         delta_N             (int, optional) : Delta number of clusters in the Iterative KNN. Defaults to 1.
         N_patience          (int, optional) : Patience in the Iterative KNN. Defaults to -1.
         score_batch         (int, optional) : Batch size in each KNN. Defaults to 1024.
+        
+        generation_threshold    (float, optional)   : Threshold for distance in XRF generation. Has to be in (0, 1) range, where 0 is every pigments and 1 possibily zero. Defaults to 0.2. 
     """
     start_all = datetime.datetime.now()
     # init RGB utils
@@ -82,7 +85,9 @@ def generate_all(
                 # RGBKMeansClustering
                 delta_N = delta_N,
                 N_patience = N_patience,
-                score_batch = score_batch
+                score_batch = score_batch,
+                # Threshold
+                generation_threshold=generation_threshold
             )
 
             # generate XRF 

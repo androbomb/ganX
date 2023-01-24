@@ -286,6 +286,7 @@ class Distances:
         rgb2lab( rgb )          :   returns the CIELAB image
         CIEdelta1994_similarity(rgb1, rgb2) :   returns the similarity using the CIEdelta1994 distance
         CIEdelta2000_similarity(rgb1, rgb2) :   returns the similarity using the CIEdelta2000 distance
+
     """
     def __init__(self):
         pass
@@ -330,7 +331,7 @@ class Distances:
 #
 class XRFGenerator:
     """_summary_
-    Class to perform the MA-XRF generations out of a RGB image. 
+    Class to perform the XRF generations out of a RGB image. 
 
     It generates the MA-XRF np.array by extracting randomly a certain number of counts, pixel-by-pixel,
     from an XRF signal probability distribution obtained, pixel-by-pixel, by similarity with pigments in a passed database.
@@ -394,7 +395,8 @@ class XRFGenerator:
         N_patience: int = -1, 
         score_batch: int = 1024,
         # Optional Args - NEW
-        xrf_pixel_noise_lambda: float = -1 
+        xrf_pixel_noise_lambda: float = -1, 
+        generation_threshold: float = 0.2
     ):  
         """_summary_
         Init method.
@@ -413,6 +415,7 @@ class XRFGenerator:
             N_patience              (int, optional)     : Iterative KNN patience. Defaults to -1.
             score_batch             (int, optional)     : Iterative KNN batch size. Defaults to 1024.
             xrf_pixel_noise_lambda  (float, optional)   : XRF Pixel Noise lambda - TBUsed. Defaults to -1.
+            generation_threshold    (float, optional)   : Threshold for distance in XRF generation. Has to be in (0, 1) range, where 0 is every pigments and 1 possibily zero. Defaults to 0.2. 
         """
         super().__init__()
         # Distances
@@ -440,6 +443,8 @@ class XRFGenerator:
             self._lambda = np.inf # i.e., no noise
         else:
             self._lambda = xrf_pixel_noise_lambda
+        
+        self._generation_threshold = generation_threshold if (generation_threshold > 0 and generation_threshold <1) else 0.2
             
         
         # Now, Init empy
@@ -454,7 +459,7 @@ class XRFGenerator:
                 rebin_size
             )
         )
-           
+        
     ###########################################
     # Class methods
     ###########################################
@@ -507,7 +512,9 @@ class XRFGenerator:
             # Compute XRF distribution for the color out from the pigments_dict_data
             _distr = self.get_distribution_from_rgb(
                 rgb = _avg_rgb,
-                pigments_dict = self._pigmentDataBaseUtils.pigments_dict_data
+                pigments_dict = self._pigmentDataBaseUtils.pigments_dict_data,
+                # threshold
+                threshold=self._generation_threshold
             )
             
             # compute the _mask out of the cluster
@@ -691,7 +698,7 @@ class XRFGenerator:
                 size=(size[0]*size[1], num_of_counts),
                 p=distr,
                 axis=-1
-            )
+            ), bins=distr.size
         ).reshape(size[0], size[1], distr.size)
     
     @staticmethod
